@@ -1,0 +1,44 @@
+<div class="wrapper">
+  <div class="inner">
+    <img src="../../../assets/images/image-1.png" alt="" class="image-1">
+    <form [formGroup]="validateFormLogin" (ngSubmit)="submitForm()">
+      <h3><strong>Đăng nhập</strong></h3>
+
+      <span class="lnr lnr-user">Tên đăng nhập</span>
+      <div class="form-holder" style="margin-top: 0.5rem;">
+        <input type="text" class="form-control" formControlName="username" placeholder="Hãy điền tên đăng nhập">
+      </div>
+
+      <span class="lnr lnr-user">Mật khẩu</span>
+      <div class="form-holder" style="margin-top: 0.5rem;">
+        <nz-input-group>
+          <span class="lnr lnr-lock"></span>
+          <input [type]="passwordVisible ? 'text' : 'password'" class="form-control" formControlName="password"
+            placeholder="Hãy điền mật khẩu">
+          <span style="float: right; left: 75% !important; width: auto;" class="icon-pass form-control" 
+          nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+            (click)="passwordVisible = !passwordVisible"></span>
+        </nz-input-group>
+      </div>
+
+      <div div nz-row class="login-form-margin" style="display: flex; justify-content: space-between;">
+        <label nz-checkbox formControlName="remember">
+          <span>Ghi nhớ tài khoản</span>
+        </label>
+        <div nz-col [nzSpan]="12">
+          <a class="login-form-forgot" style="color: rgba(0,0,0,.85); float: right;" [routerLink]="'#'">Bạn quên mật
+            khẩu?</a>
+        </div>
+      </div>
+      <button>
+        <span>Đăng nhập</span>
+      </button>
+      <div style="text-align: center;">
+        HOẶC <br>
+        <a [routerLink]="'/auth/signup'" style="padding: 1rem;">Đăng ký tài khoản ngay!</a>
+      </div>
+    </form>
+    <img src="../../../assets/images/image-2.png" alt="" class="image-2">
+  </div>
+
+</div>
