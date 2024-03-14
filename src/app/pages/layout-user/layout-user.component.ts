@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { NzMessageService } from 'ng-zorro-antd/message';
-import { NzModalService } from 'ng-zorro-antd/modal';
-import { AuthenticationService } from 'src/app/service/authentication/authentication.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {NzMessageService} from 'ng-zorro-antd/message';
+import {NzModalService} from 'ng-zorro-antd/modal';
+import {AuthenticationService} from 'src/app/service/authentication/authentication.service';
+import {SearchService} from "../../service/search.service";
 
 @Component({
   selector: 'app-layout-user',
@@ -19,31 +20,42 @@ export class LayoutUserComponent implements OnInit {
 
   menus: any[] = [
     {
-      title: 'Trang chủ',
+      title: 'Overview',
       icon: 'fas fa-house',
       url: '',
       role: 'student',
     },
     {
-      title: 'Khóa học',
-      icon: 'fas fa-person-chalkboard',
-      role: 'user',
+      title: 'Repository',
+      icon: 'fas fa-rectangle-terminal',
+      role: 'student',
+      url: 'documents',
+      subMenus: [
+        {
+          title: 'File',
+          icon: 'fas fa-file-code',
+          url: '',
+          role: 'student',
+        },
+        {
+          title: 'Commit',
+          icon: 'fas fa-code-commit',
+          url: '',
+          role: 'student',
+        },
+        {
+          title: 'Branch',
+          icon: 'fas fa-code-branch',
+          url: '',
+          role: 'student',
+        },
+      ]
     },
     {
-      title: 'Lịch học',
-      icon: 'fas fa-calendar',
+      title: 'Defect Prediction',
+      icon: 'fas fa-crosshairs',
       role: 'student',
-    },
-    {
-      title: 'Tài liệu',
-      icon: 'fas fa-book',
-      role: 'student',
-    },
-    {
-      title: 'Nhóm',
-      icon: 'fas fa-user-group',
-      role: 'student',
-    },
+    }
   ];
 
   breadcrumbs: string[] = [];
@@ -51,6 +63,7 @@ export class LayoutUserComponent implements OnInit {
   url: string;
 
   constructor(
+    private searchService: SearchService,
     private route: ActivatedRoute,
     private router: Router,
     private modal: NzModalService,
@@ -79,6 +92,10 @@ export class LayoutUserComponent implements OnInit {
   initUserInform() {
     this.role = 'student';
     this.username = 'Hà Trang';
+  }
+
+  updateSearch(value: string): void {
+    this.searchService.setSearchValue(value);
   }
 
   initNotification() {
@@ -140,10 +157,12 @@ export class LayoutUserComponent implements OnInit {
     }
     return breadcrumbs;
   }
+
   getMenuTitle(url: string): string {
     const menuItem = this.menus.find((item) => item.url === url);
     return menuItem ? menuItem.title : url;
   }
+
   getMenuUrl(title: string): string {
     const menuItem = this.menus.find((item) => item.title === title);
     return menuItem ? menuItem.url : title;
@@ -173,6 +192,6 @@ export class LayoutUserComponent implements OnInit {
   }
 
   uploadFile() {
-    
+
   }
 }

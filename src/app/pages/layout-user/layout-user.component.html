@@ -1,17 +1,18 @@
 <nz-layout class="layout">
-  <nz-sider class="menu-sidebar" nzTheme="dark" nzCollapsible nzWidth="250px" nzBreakpoint="md"
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="250px" nzBreakpoint="md"
     [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <div class="sidebar-logo" [routerLink]="'/'">
-      <div style="width: 2.3rem; height: 2.3rem; border-radius: 8px; background-color: #fff; transform: rotate(45deg);">
+      <div style="width: 2.3rem; height: 2.3rem; border: 2px solid white; border-radius: 8px; background-color: #F3B405; transform: rotate(45deg);">
       </div>
-      <span style="margin: 1em; font-size: 16px; color: #fff;"><strong>ONTHI</strong></span>
+      <span style="margin: 1em; font-size: 16px; color: #F3B405;"><strong>DF Source</strong></span>
     </div>
-    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <ng-container *ngFor="let item of menus">
-        <li *ngIf="item.subMenus && item.role == role" nz-submenu [nzTitle]="item.title" [nzIcon]="item.icon">
-          <ul>
-            <li *ngFor="let sub of item.subMenus" nz-menu-item>
-              <a [routerLink]="sub.url">{{ sub.title }}</a>
+    <ul nz-menu style="background-color: #2C3E50"  nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <ng-container *ngFor="let item of menus" >
+        <li *ngIf="item.subMenus && item.role == role" nz-submenu [nzTitle]="item.title" nzIcon="code" [routerLink]="item.url">
+          <ul style="background-color: #2C3E50" *ngFor="let sub of item.subMenus">
+            <li [routerLink]="sub.url" nz-menu-item>
+              <span nz-icon><i [ngClass]="sub.icon"></i></span>
+              <span>{{ sub.title }}</span>
             </li>
           </ul>
         </li>
@@ -32,19 +33,26 @@
   </nz-sider>
   <nz-layout class="right-layout">
     <nz-header>
-
-      <div class="app-header">
-        <div style="margin-left: 1.5rem;">
-          <nz-input-group style="border-radius: 16px; width: 600px;" [nzSuffix]="suffixIconSearch">
-            <input type="text" nz-input placeholder="Tìm kiếm" />
-          </nz-input-group>
+      <div class="app-header" nz-flex>
+        <div class="flex-item"></div>
+        <div class="flex-item">
+          <ng-container *ngIf="!isCollapsed">
+            <nz-input-group style="border-radius: 16px; width: 300px; background-color: white;color: black" [nzSuffix]="suffixIconSearch">
+              <input style="color: black" type="text" nz-input placeholder="Search project and repository"  (input)="updateSearch($event.target.value)" />
+            </nz-input-group>
+          </ng-container>
+          <ng-container *ngIf="isCollapsed" (click)="isCollapsed = false">
+            <nz-input-group style="border-radius: 16px; width: 100%; background-color: white;color: black" [nzSuffix]="suffixIconSearch">
+                <input style="color: black" type="text" nz-input placeholder="Search project and repository"  (input)="updateSearch($event.target.value)" />
+            </nz-input-group>
+          </ng-container>
 
           <ng-template #suffixIconSearch>
             <span nz-icon nzType="search"></span>
           </ng-template>
         </div>
 
-        <div class="header-user">
+        <div class="header-user flex-item ">
 
           <div style="margin-right: 1.5rem;">
             <nz-badge [nzCount]="5" nz-dropdown [nzDropdownMenu]="noti" [nzPlacement]="'bottomRight'">
@@ -85,10 +93,10 @@
           <div>
             <div style="display: flex; align-items: center;">
               <div class="user-menu" nz-dropdown [nzDropdownMenu]="menu" [nzPlacement]="'bottomCenter'">
-                <span style="font-size: 14px">
+                <span style="font-size: 14px; color: white">
                   <strong>{{username}}</strong>
                 </span>
-                <span style="font-size: 12px">
+                <span style="font-size: 12px; color: white">
                   {{role==='teacher'?'Teacher':'Student'}}
                 </span>
               </div>
@@ -118,25 +126,14 @@
         </div>
       </div>
     </nz-header>
-    <!-- <nz-breadcrumb>
-      <nz-breadcrumb-item>
-        <a [routerLink]="['/']">Home</a>
-      </nz-breadcrumb-item>
-      <nz-breadcrumb-item *ngIf="url==='/'">
-        <a>New Management</a>
-      </nz-breadcrumb-item>
-      <nz-breadcrumb-item *ngFor="let item of breadcrumbs">
-        <a [routerLink]="getMenuUrl(getMenuTitle(item))">{{ getMenuTitle(item) }}</a>
-      </nz-breadcrumb-item>
-    </nz-breadcrumb> -->
     <nz-content>
       <div class="inner-content">
         <router-outlet></router-outlet>
       </div>
     </nz-content>
     <nz-footer style="text-align: center; padding: 0 25px 10px 25px; margin-top: -8px; line-height: 20px;">
-      ©Copyright <a href="">BCLC</a>. All Rights Reserved.
-      Designed by <a href="">BCLC</a>
+      ©Copyright <a href="">HTC</a>. All Rights Reserved.
+      Designed by <a href="">HTC</a>
     </nz-footer>
   </nz-layout>
 </nz-layout>

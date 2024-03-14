@@ -1,40 +1,79 @@
+<!--<div class="data-table">-->
+<!--  <div class="content-main">-->
+<!--    <h5 style="text-align: center;">List documents</h5>-->
+<!--  </div>-->
+
+<!--  <nz-table #basicTable [nzData]="listOfData">-->
+<!--    <thead>-->
+<!--      <tr>-->
+<!--        <th>STT</th>-->
+<!--        <th>Letter of credit</th>-->
+<!--        <th>Start date</th>-->
+<!--        <th>Status</th>-->
+<!--        <th>Detail</th>-->
+<!--        <th>Upload</th>-->
+<!--      </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--      <tr *ngFor="let data of basicTable.data; let i = index">-->
+<!--        <td>{{ i + 1 }}</td>-->
+<!--        <td><a style="color: #2F54EB;" [routerLink]="['/LCs', data.LCID]">{{ data.LCID }}</a>-->
+<!--        </td>-->
+<!--        <td>{{ data.startDate }}</td>-->
+<!--        <td>-->
+<!--          {{ data.status }}-->
+<!--        </td>-->
+<!--        <td>-->
+<!--          <a><span style="color: #2F54EB;" nz-icon nzType="eye" nzTheme="outline"-->
+<!--              [routerLink]="['/documents', data.LCID]"></span></a>-->
+<!--        </td>-->
+<!--        <td *ngIf="role=='user' && data.status=='advising_bank_approved'">-->
+<!--          <a><span style="color: #2F54EB;" nz-icon nzType="diff" nzTheme="outline"-->
+<!--              [routerLink]="['/LCs/upload', data.LCID]"></span></a>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--    </tbody>-->
+<!--  </nz-table>-->
+<!--</div>-->
 <!--
-<div class="data-table">
-  <div class="content-main">
-    <h5 style="text-align: center;">List documents</h5>
-  </div>
-
-  <nz-table #basicTable [nzData]="listOfData">
-    <thead>
-      <tr>
-        <th>STT</th>
-        <th>Letter of credit</th>
-        <th>Start date</th>
-        <th>Status</th>
-        <th>Detail</th>
-        <th>Upload</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of basicTable.data; let i = index">
-        <td>{{ i + 1 }}</td>
-        <td><a style="color: #2F54EB;" [routerLink]="['/LCs', data.LCID]">{{ data.LCID }}</a>
-        </td>
-        <td>{{ data.startDate }}</td>
-        <td>
-          {{ data.status }}
-        </td>
-        <td>
-          <a><span style="color: #2F54EB;" nz-icon nzType="eye" nzTheme="outline"
-              [routerLink]="['/documents', data.LCID]"></span></a>
-        </td>
-        <td *ngIf="role=='user' && data.status=='advising_bank_approved'">
-          <a><span style="color: #2F54EB;" nz-icon nzType="diff" nzTheme="outline"
-              [routerLink]="['/LCs/upload', data.LCID]"></span></a>
-        </td>
-      </tr>
-    </tbody>
-  </nz-table>
-</div>-->
 <td-ngx-text-diff [left]="oldStr" [right]="newStr"></td-ngx-text-diff>
+-->
+<nz-page-header class="site-page-header" nzBackIcon>
+  <nz-page-header-title>Repository</nz-page-header-title>
+  <nz-page-header-subtitle>This is a subtitle</nz-page-header-subtitle>
+  <nz-page-header-content>
 
+    <div style="display: flex; flex-wrap: wrap;">
+      <nz-card nzHoverable style="width:240px; margin-right: 16px; margin-bottom: 16px;" [nzCover]="coverTemplate1">
+        <nz-card-meta nzTitle="Europe Street beat" nzDescription="www.instagram.com"></nz-card-meta>
+      </nz-card>
+      <nz-card nzHoverable style="width:240px; margin-right: 16px; margin-bottom: 16px;" [nzCover]="coverTemplate2">
+        <nz-card-meta nzTitle="Europe Street beat" nzDescription="www.instagram.com"></nz-card-meta>
+      </nz-card>
+      <nz-card nzHoverable style="width:240px; margin-right: 16px; margin-bottom: 16px;" [nzCover]="coverTemplate2">
+        <nz-card-meta nzTitle="Europe Street beat" nzDescription="www.instagram.com"></nz-card-meta>
+      </nz-card>
+      <nz-card nzHoverable style="width:240px; margin-right: 16px; margin-bottom: 16px;" [nzCover]="coverTemplate2">
+        <nz-card-meta nzTitle="Europe Street beat" nzDescription="www.instagram.com"></nz-card-meta>
+      </nz-card>
+      <nz-card nzHoverable style="width:240px; margin-right: 16px; margin-bottom: 16px;" [nzCover]="coverTemplate2">
+        <nz-card-meta nzTitle="Europe Street beat" nzDescription="www.instagram.com"></nz-card-meta>
+      </nz-card>
+      <nz-card nzHoverable style="width:240px; margin-right: 16px; margin-bottom: 16px;" [nzCover]="coverTemplate2">
+        <nz-card-meta nzTitle="Europe Street beat" nzDescription="www.instagram.com"></nz-card-meta>
+      </nz-card>
+      <nz-card nzHoverable style="width:240px; margin-right: 16px; margin-bottom: 16px;" [nzCover]="coverTemplate2">
+        <nz-card-meta nzTitle="Europe Street beat" nzDescription="www.instagram.com"></nz-card-meta>
+      </nz-card>
+      <!-- Add more cards as needed -->
+    </div>
+  </nz-page-header-content>
+</nz-page-header>
+
+<ng-template #coverTemplate1>
+  <img alt="example" src="./assets/images/img.png"/>
+</ng-template>
+
+<ng-template #coverTemplate2>
+  <img alt="example" src="./assets/images/img.png"/>
+</ng-template>
